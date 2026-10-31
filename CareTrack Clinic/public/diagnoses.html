@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tashxislar — CareTrack Clinic</title>
+  <link rel="stylesheet" href="/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Tashxislar</h1>
+      <button class="btn btn-primary" onclick="openAdd()">+ Tashxis qo'shish</button>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" id="searchQ" placeholder="Bemor ismi yoki ICD kodi..." style="min-width:220px;"/>
+      <select id="filterSeverity">
+        <option value="">Barcha darajalar</option>
+        <option value="mild">Yengil</option>
+        <option value="moderate">O'rta</option>
+        <option value="severe">Og'ir</option>
+      </select>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ICD Kod</th>
+            <th>Sarlavha</th>
+            <th>Og'irlik</th>
+            <th>Bemor</th>
+            <th>Shifokor</th>
+            <th>Sana</th>
+            <th>Amallar</th>
+          </tr>
+        </thead>
+        <tbody id="dxTbody">
+          <tr><td colspan="8" class="empty">Yuklanmoqda...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle">Tashxis qo'shish</span>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <form id="dxForm">
+        <div class="form-group">
+          <label>ICD Kod</label>
+          <input type="text" id="fIcd" placeholder="Masalan: I10"/>
+        </div>
+        <div class="form-group">
+          <label>Sarlavha</label>
+          <input type="text" id="fTitle" placeholder="Tashxis nomi"/>
+        </div>
+        <div class="form-group">
+          <label>Tavsif</label>
+          <textarea id="fDesc" placeholder="Qo'shimcha ma'lumot..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Og'irlik darajasi *</label>
+          <select id="fSeverity" required>
+            <option value="">Tanlang</option>
+            <option value="mild">Yengil</option>
+            <option value="moderate">O'rta</option>
+            <option value="severe">Og'ir</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Bemor *</label>
+          <select id="fPatient" required>
+            <option value="">Bemor tanlang</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Shifokor</label>
+          <select id="fDoctor">
+            <option value="">Shifokor tanlanmagan</option>
+          </select>
+        </div>
+        <div id="formError" class="error-msg" style="display:none;"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Bekor qilish</button>
+          <button type="submit" class="btn btn-primary">Saqlash</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/diagnoses.js"></script>
+</body>
+</html>

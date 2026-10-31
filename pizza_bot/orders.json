@@ -1,0 +1,341 @@
+[
+  {
+    "id": 1,
+    "created_at": "2025-11-24 22:24:04",
+    "customer_name": "raxmatillo",
+    "phone": "+998 95 067 81 01",
+    "address": "sergeki tumani",
+    "product_id": 4,
+    "product_name": "Vegetarian",
+    "quantity": 1,
+    "total": 50000,
+    "status": "Qabul qilindi",
+    "chat_id": 7165482615
+  },
+  {
+    "id": 2,
+    "created_at": "2025-11-24 22:25:26",
+    "customer_name": "a",
+    "phone": "1234567",
+    "address": "a",
+    "product_id": 3,
+    "product_name": "Chicken BBQ",
+    "quantity": 5,
+    "total": 300000,
+    "status": "Yetkazildi",
+    "chat_id": 7165482615
+  },
+  {
+    "id": 3,
+    "created_at": "2025-11-25 11:50:55",
+    "customer_name": "Marjona",
+    "phone": "+998932095007",
+    "address": "sergili",
+    "product_id": 3,
+    "product_name": "Chicken BBQ",
+    "quantity": 2,
+    "total": 120000,
+    "status": "Qabul qilindi",
+    "chat_id": 6353377428
+  },
+  {
+    "id": 4,
+    "created_at": "2025-11-25 12:03:20",
+    "customer_name": "q",
+    "phone": "q",
+    "address": "a",
+    "product_id": 1,
+    "product_name": "Margherita",
+    "quantity": 1,
+    "total": 45000,
+    "status": "Qabul qilindi",
+    "chat_id": 7165482615
+  },
+  {
+    "id": 5,
+    "created_at": "2025-11-25 12:05:53",
+    "customer_name": "q",
+    "phone": "q",
+    "address": "q",
+    "product_id": 1,
+    "product_name": "Margherita",
+    "quantity": 1,
+    "total": 45000,
+    "status": "Yangi",
+    "chat_id": 7165482615
+  },
+  {
+    "id": 6,
+    "created_at": "2025-11-25 12:08:39",
+    "customer_name": "q",
+    "phone": "q",
+    "address": "q",
+    "product_id": 2,
+    "product_name": "Pepperoni",
+    "quantity": 1,
+    "total": 55000,
+    "status": "Qabul qilindi",
+    "chat_id": 7165482615
+  },
+  {
+    "id": 7,
+    "created_at": "2025-11-25 12:26:49",
+    "chat_id": 7165482615,
+    "name": "q",
+    "phone": "q",
+    "address": "q",
+    "pizza": "Margherita",
+    "price": 45000,
+    "status": "Qabul qilindi"
+  },
+  {
+    "id": 8,
+    "created_at": "2025-11-25 12:44:53",
+    "chat_id": 6353377428,
+    "customer_name": "Marjona",
+    "phone": "+998932095007",
+    "address": "Lat:41.234487, Lon:69.215899",
+    "pizza_id": 4,
+    "pizza_name": "Vegetarian",
+    "size": "35",
+    "extras": [],
+    "payment_type": "Naqd",
+    "total": 75000,
+    "status": "Yangi",
+    "courier": null
+  },
+  {
+    "id": 9,
+    "created_at": "2025-11-25 13:03:17",
+    "chat_id": 6353377428,
+    "pizza_id": 3,
+    "pizza_name": "Chicken BBQ",
+    "base_price": 60000,
+    "size": "35",
+    "extras": [
+      "Qo'shimcha kolbasa",
+      "Achchiq sous"
+    ],
+    "customer_name": "Marjona",
+    "phone": "998932095007",
+    "address": "Lat:41.234479, Lon:69.215871",
+    "payment_type": "Naqd",
+    "total": 103000,
+    "courier": "Raxmatillo",
+    "status": "Yetkazildi"
+  },
+  {
+    "id": 10,
+    "created_at": "2025-11-25 13:25:18",
+    "chat_id": 6353377428,
+    "customer_name": "Marjona",
+    "phone": "998932095007",
+    "address": "Lat:41.234207, Lon:69.216105",
+    "pizza_id": 2,
+    "pizza_name": "Pepperoni",
+    "size": "Qo'ziqorin",
+    "extras": [
+      "Qo'ziqorin"
+    ],
+    "payment_type": "Karta",
+    "total": 62000,
+    "status": "Yetkazildi",
+    "courier": "man"
+  },
+  {
+    "id": 11,
+    "created_at": "2025-11-25 15:22:19",
+    "chat_id": 6353377428,
+    "customer_name": "Marjona",
+    "phone": "+998932095007",
+    "address": "Manzilni matn ko'rinishida yozish",
+    "pizza_id": 3,
+    "pizza_name": "Chicken BBQ",
+    "size": "30",
+    "extras": [
+      "Fanta 1L"
+    ],
+    "payment_type": "Naqd",
+    "total": 87000,
+    "status": "Yetkazildi",
+    "courier": "san",
+    "eta": "39 daqiqa"
+  },
+  {
+    "id": 12,
+    "created_at": "2025-11-25 21:12:22",
+    "chat_id": 7165482615,
+    "customer_name": "raxmatillo",
+    "phone": "+998332315007",
+    "address": "Manzilni matn ko'rinishida yozish",
+    "pizza_id": 4,
+    "pizza_name": "Vegetarian",
+    "size": "30",
+    "extras": [
+      "Sprite 1L",
+      "Qo'shimcha kolbasa"
+    ],
+    "payment_type": "Karta",
+    "total": 84500,
+    "status": "Yangi",
+    "courier": null
+  },
+  {
+    "id": 13,
+    "created_at": "2025-11-25 22:21:56",
+    "chat_id": 7165482615,
+    "customer_name": "raxmatillo",
+    "phone": "998332315007",
+    "address": "Lat:41.212766 Lon:69.197053",
+    "pizza_id": 4,
+    "pizza_name": "Vegetarian",
+    "size": "25",
+    "quantity": 10,
+    "extras": [
+      "Qo'shimcha kolbasa"
+    ],
+    "drinks": [
+      "Sprite 1L",
+      "Coca-Cola 1L"
+    ],
+    "payment_type": "Naqd",
+    "total": 624000,
+    "status": "Yetkazildi",
+    "courier": "ali",
+    "eta": "15 daqiqa"
+  },
+  {
+    "id": 14,
+    "created_at": "2025-11-27 16:08:03",
+    "chat_id": 6353377428,
+    "customer_name": "a",
+    "phone": "+998932095007",
+    "address": "a",
+    "pizza_id": 2,
+    "pizza_name": "Pepperoni",
+    "size": "35",
+    "quantity": 10,
+    "extras": [
+      "Qo'shimcha kolbasa",
+      "Qo'shimcha pishloq",
+      "Qo'ziqorin",
+      "Achchiq sous"
+    ],
+    "drinks": [
+      "Fanta 1L",
+      "Coca-Cola 1L"
+    ],
+    "payment_type": "Naqd",
+    "total": 1129000,
+    "status": "Yetkazildi",
+    "courier": "a",
+    "eta": "37 daqiqa"
+  },
+  {
+    "id": 15,
+    "created_at": "2025-11-27 17:04:47",
+    "chat_id": 6353377428,
+    "customer_name": "m",
+    "phone": "+998932095007",
+    "address": "m",
+    "pizza_id": 4,
+    "pizza_name": "Vegetarian",
+    "size": "35",
+    "quantity": 2,
+    "extras": [],
+    "drinks": [
+      "Fanta 1L",
+      "Coca-Cola 1L"
+    ],
+    "payment_type": "Naqd",
+    "total": 174000,
+    "status": "Yetkazildi",
+    "courier": "san",
+    "eta": "29 daqiqa"
+  },
+  {
+    "id": 16,
+    "created_at": "2025-11-27 17:07:23",
+    "chat_id": 6353377428,
+    "customer_name": "m",
+    "phone": "+998932095007",
+    "address": "m",
+    "pizza_id": 4,
+    "pizza_name": "Vegetarian",
+    "size": "35",
+    "quantity": 10,
+    "extras": [],
+    "drinks": [],
+    "payment_type": "Naqd",
+    "total": 750000,
+    "status": "Yetkazildi",
+    "courier": null,
+    "eta": null
+  },
+  {
+    "id": 17,
+    "created_at": "2025-12-11 14:25:01",
+    "chat_id": 6353377428,
+    "customer_name": "m",
+    "phone": "+998932095007",
+    "address": "m",
+    "pizza_id": 4,
+    "pizza_name": "Vegetarian",
+    "size": "35",
+    "quantity": 1,
+    "extras": [],
+    "drinks": [
+      "Sprite 1L"
+    ],
+    "payment_type": "Naqd",
+    "total": 87000,
+    "status": "Yetkazildi",
+    "courier": "m",
+    "eta": "36 daqiqa"
+  },
+  {
+    "id": 18,
+    "created_at": "2025-12-25 16:26:50",
+    "chat_id": 6528740396,
+    "customer_name": "raxmatillo",
+    "phone": "998950678101",
+    "address": "Lat:41.234194 Lon:69.216144",
+    "pizza_id": 4,
+    "pizza_name": "Vegetarian",
+    "size": "25",
+    "quantity": 8,
+    "extras": [
+      "Achchiq sous"
+    ],
+    "drinks": [
+      "Sprite 1L"
+    ],
+    "payment_type": "Karta",
+    "total": 436000,
+    "status": "Yangi",
+    "courier": null,
+    "eta": null
+  },
+  {
+    "id": 19,
+    "created_at": "2025-12-25 17:06:59",
+    "chat_id": 6528740396,
+    "customer_name": "q",
+    "phone": "998950678101",
+    "address": "Lat:41.234173 Lon:69.216155",
+    "pizza_id": 4,
+    "pizza_name": "Vegetarian",
+    "size": "25",
+    "quantity": 7,
+    "extras": [],
+    "drinks": [
+      "Sprite 1L",
+      "Suv 1L"
+    ],
+    "payment_type": "Karta",
+    "total": 367000,
+    "status": "Yangi",
+    "courier": null,
+    "eta": null
+  }
+]

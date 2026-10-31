@@ -1,0 +1,72 @@
+h1 {
+  background-color: aqua;
+  outline: 3px solid red;     
+                            /* Tashqi qizil chiziq */
+  /* outline-offset: 4px;   */
+                      /* Outline elementdan 4px tashqarida joylashadi */
+  padding: 10px;
+}
+
+p {
+  background-color: gray;
+  outline: 2px dashed blue;   
+                               /* Tashqi ko‘k chiziq */
+  /* outline-offset: 6px;  */
+                        /* Elementdan uzoqlashtiradi */
+  padding: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* 1️. Border xususiyatlari */
+
+/* border-width: 3px; */   /* Chiziq qalinligi */
+
+/* border-style: solid; */ /* Chiziq turi: solid, dashed, dotted, double va hokazo */
+
+/* border-color: red;  */  /* Chiziq rangi */
+
+/* border-radius: 10px; */ /* Chegaraning burchaklarini yumaloqlashtiradi*/
+
+
+
+/* Outline xususiyatlari */
+
+ /* outline-width: 2px;  */     /* Chiziq qalinligi */
+
+/* outline-style: dotted;  */  /* Chiziq turi: solid, dashed, dotted va hokazo */
+
+/* outline-color: blue;   */   /* Chiziq rangi */
+
+/* outline-offset: 5px;   */   /* Elementdan tashqarida joylashgan masofa */
+

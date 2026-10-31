@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/main.css">
+  <title>Zerikib qoldingizmi?</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Keling, siz uchun biror narsa topamiz ✌️</h1>
+
+    <form action="/" id="form" class="form" method="POST">
+      <select name="type" class="form-select">
+        <option value="" data-display="Select">Tasodifiy tur</option>
+        <option value="education">Ta'lim</option>
+        <option value="charity">Xayriya</option>
+        <option value="recreational">Dam olish</option>
+        <option value="relaxation">Yengil dam</option>
+        <option value="busywork">Mashg'ulot</option>
+        <option value="social">Ijtimoiy</option>
+        <option value="diy">O'z qo'ling bilan</option>
+        <option value="music">Musiqa</option>
+      </select>
+      <select name="participants" class="form-select">
+        <option value="">Istalgan sondagi ishtirokchilar</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <button type="submit" class="form-submit">Topish</button>
+    </form>
+    <section id="cards" class="cards">
+      <% if (locals.data) { %>
+      <article class="card-item">
+        <h2 class="card-activity">
+          <%= data.activity %>
+        </h2>
+        <div class="card-info">
+          <span class="card-type">
+            <%= data.type %>
+          </span>
+          <span class="card-participants">
+            ishtirokchilar: <span class="card-number"><%= data.participants %></span>
+          </span>
+        </div>
+      </article>
+      <% } %>
+
+      <% if (locals.error) { %>
+      <div id="tag-error" class="tag-error">
+        <%= error %>
+      </div>
+      <% } %>
+
+    </section>
+  </div>
+
+</body>
+
+</html>

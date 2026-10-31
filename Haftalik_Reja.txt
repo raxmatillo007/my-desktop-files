@@ -1,0 +1,92 @@
+===============================================================================
+                        HAFTALIK REJA (DUSHANBADAN YAKSHANBAGA)
+===============================================================================
+
+        [SA - 1:00]  Dushanba  [2:00]  Seshanba  [3:00]  Chuvar  [4:00]  Payshanba
+===============================================================================
+
+  ☀  DUSHANBA  (Saturday)
+  │  Dasturning boshlanishi. Yangi hafta uchun ma'lumot topshirish.
+  │  ■ 08:00-09:00  Tanishish va so'zlash
+  │  ■ 09:00-10:00  Kundalik ishlarini to'plash
+  │  ■ 10:00-12:00  Dasturiy ta'minot ishlaridan o'tish
+  │  ■ 12:00-13:00  Meatash va ichimlik
+  │  ■ 13:00-15:00  Darslar / ish vazifalari
+  │  ■ 15:00-16:00  Reja saqlash (bu fayl)
+  │  ■ 16:00-17:00  Rozilik / inson-ajratish
+  │  ■ 17:00-18:00  Dostlar bilan vaqt o'tkazish
+
+  ☀  SESHANBA  (Sunday)
+  │  O'rindilash va yangi reja tuzish.
+  │  ■ 08:00-09:00  Tanishish
+  │  ■ 09:00-10:00  Haftaning majburiy vazifalari
+  │  ■ 10:00-12:00  Darslar / ish
+  │  ■ 12:00-13:00  Meatash
+  │  ■ 13:00-14:00  Yig'ishlar
+  │  ■ 14:00-16:00  Proektlar / kengaytmalar
+  │  ■ 16:00-17:00  Kuzatish (bokama)
+  │  ■ 17:00-18:00  O'tish va yashirin danish
+
+  🌙  CHUVAR  (Monday)
+  │  Boshqa hafta. Ishlab chiqarish va yig'ilishlar.
+  │  ■ 08:00-09:00  Tanishish
+  │  ■ 09:00-12:00  Darslar / ta'minot
+  │  ■ 12:00-13:00  Meatash
+  │  ■ 13:00-15:00  Darslar / ish
+  │  ■ 15:00-16:00  Ovqatlanish
+  │  ■ 16:00-18:00  Dastur muvaffaqiyatli ishlash uchun ish
+
+  🌙  SHAP-SHANBA  (Tuesday)
+  │  Operatsion ishlar va takliflar.
+  │  ■ 08:00-09:00  Tanishish
+  │  ■ 09:00-12:00  Darslar / ish
+  │  ■ 12:00-13:00  Meatash
+  │  ■ 13:00-15:00  Darslar / ish
+  │  ■ 15:00-16:00  Ovqatlanish
+  │  ■ 16:00-18:00  Dastur muvaffaqiyatli ishlash uchun ish
+
+  🌙  CHUVA  (Wednesday)
+  │  Asosiy ish va solish-tushma ishlab chiqarish.
+  │  ■ 08:00-09:00  Tanishish
+  │  ■ 09:00-12:00  Darslar / ta'minot
+  │  ■ 12:00-13:00  Meatash
+  │  ■ 13:00-15:00  Darslar / ish
+  │  ■ 15:00-16:00  Ovqatlanish
+  │  ■ 16:00-18:00  Dastur muvaffaqiyatli ishlash uchun ish
+
+  🌙  PAY-SHANBA  (Thursday)
+  │  Iltimos, ma'lumotlarni shuncha yozamiz.
+  │  ■ 08:00-09:00  Tanishish
+  │  ■ 09:00-12:00  Darslar / ish
+  │  ■ 12:00-13:00  Meatash
+  │  ■ 13:00-15:00  Darslar / ish
+  │  ■ 15:00-16:00  Ovqatlanish
+  │  ■ 16:00-18:00  Dastur muvaffaqiyatli ishlash uchun ish
+
+  🌙  SESHANBA  (Friday)
+  │  Haqnoma. Baholash va keyingi hafta uchun tayyorgarish.
+  │  ■ 08:00-09:00  Tanishish
+  │  ■ 09:00-10:00  Ta'minotni qayta ko'rib chiqish
+  │  ■ 10:00-12:00  Darslar / shug'ullanish
+  │  ■ 12:00-13:00  Meatash
+  │  ■ 13:00-14:00  Ovqatlanish
+  │  ■ 14:00-16:00  Dastur muvaffaqiyatli ishlash uchun ish
+  │  ■ 16:00-17:00  Dostlar bilan vaqt o'tkazish
+  │  ■ 17:00-18:00  O'tish / so'nggi hafta rejasini tuzish
+
+===============================================================================
+                     FOYDALANILUVCHI NOMLAR (pattern values)
+===============================================================================
+
+  • Har kuni boshlanib, endi 7 kundan bir necha darslik / ishlar uchun sayr bashorat qiling.
+  • Har kundan pul pishirish (5 minutda) qiling.
+  • Har kundan aviyatsizlik yoki tez-tez o'tkaziladigan danish (5-10 daqiqa) qiling.
+  • Qulay trufalar (sunglass, smilen, ochis) yozib e'tibor bering.
+
+===============================================================================
+  ☀  Dushanba  [6:00]  Seshanba  [7:00]  Chuvar  [8:00]  Payshanba  [9:00]
+  ☀  Dushanbaga kelayotganlar [10:00]  Seshanba [11:00]  Chuvar [12:00]  Payshanba [13:00]
+  ☀  Dushanbaga kelayotganlar [14:00]  Seshanba [15:00]  Chuvar [16:00]  Payshanba [17:00]
+  ☀  Dushanbaga kelayotganlar [18:00]  Seshanba [19:00]  Chuvar [20:00]  Payshanba [21:00]
+  ☀  Dushanbaga kelayotganlar [22:00]  Seshanba [23:00]  Chuvar [24:00]  Payshanba [1:00]
+===============================================================================

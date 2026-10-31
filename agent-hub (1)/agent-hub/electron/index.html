@@ -1,0 +1,91 @@
+<!doctype html><meta charset="utf-8"><title>Agent Hub</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#05070d;font:14px system-ui;color:#dbe2f0}
+canvas{position:fixed;inset:0}
+#panel{position:fixed;right:14px;top:14px;bottom:14px;width:360px;display:flex;flex-direction:column;background:#0d1320cc;border:1px solid #223;border-radius:14px;backdrop-filter:blur(8px)}
+#log{flex:1;overflow:auto;padding:12px}.m{margin:6px 0;line-height:1.4}.m b{color:#7aa2ff}
+#bar{display:flex;gap:6px;padding:10px;border-top:1px solid #223}
+input{flex:1;padding:9px;background:#141a26;border:1px solid #223;color:inherit;border-radius:8px}
+button{padding:9px 12px;border:0;border-radius:8px;background:#3b6cf6;color:#fff;cursor:pointer}
+#perm{display:none;position:fixed;inset:0;background:#000a;align-items:center;justify-content:center}
+#box{background:#141a26;padding:24px;border-radius:12px;max-width:460px;border:1px solid #f5a623}
+#hint{position:fixed;left:14px;bottom:10px;font-size:12px;opacity:.5}
+</style>
+<div id="panel"><div id="log"></div><div id="bar"><input id="t" placeholder="Vazifa yozing..."><button onclick="send()">▶</button><button style="background:#c93b3b" onclick="send_stop()">■</button></div></div>
+<div id="perm"><div id="box"><p id="pt"></p><button onclick="reply(true)">Ruxsat</button> <button style="background:#c93b3b" onclick="reply(false)">Rad etish</button></div></div>
+<div id="hint">Sichqoncha: aylantirish · g'ildirak: yaqinlashtirish</div>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x05070d,0.03);
+const cam=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,.1,200);cam.position.set(0,6,16);
+const rd=new THREE.WebGLRenderer({antialias:true});rd.setSize(innerWidth,innerHeight);rd.setPixelRatio(devicePixelRatio);
+document.body.prepend(rd.domElement);
+const ctl=new OrbitControls(cam,rd.domElement);ctl.enableDamping=true;ctl.maxDistance=40;
+scene.add(new THREE.AmbientLight(0x4466aa,1.2));const pl=new THREE.PointLight(0xffffff,80,60);pl.position.set(0,8,6);scene.add(pl);
+// yulduzlar
+{const g=new THREE.BufferGeometry(),p=[];for(let i=0;i<900;i++)p.push((Math.random()-.5)*120,(Math.random()-.5)*120,(Math.random()-.5)*120);
+g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));scene.add(new THREE.Points(g,new THREE.PointsMaterial({size:.12,color:0x8899cc})))}
+const grid=new THREE.GridHelper(60,60,0x1a2a55,0x0f1830);grid.position.y=-4;scene.add(grid);
+
+const nodes={},packets=[];let edges=new THREE.Group();scene.add(edges);
+function label(text){const c=document.createElement('canvas');c.width=256;c.height=64;const x=c.getContext('2d');
+ x.font='bold 30px system-ui';x.fillStyle='#dbe2f0';x.textAlign='center';x.fillText(text,128,42);
+ const s=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),transparent:true}));s.scale.set(4,1,1);return s}
+function makeNode(name,boss){
+ const r=boss?1.3:0.9,col=boss?0xffb347:0x4f8cff;
+ const m=new THREE.Mesh(new THREE.IcosahedronGeometry(r,2),new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:.35,roughness:.3,flatShading:true}));
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(r*1.5,.03,8,48),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:.4}));ring.rotation.x=Math.PI/2;m.add(ring);
+ const l=label(name);l.position.y=r+1.1;m.add(l);scene.add(m);
+ return nodes[name]={mesh:m,target:new THREE.Vector3(),working:false,flash:0,col};
+}
+function layout(agents){
+ const names=Object.keys(agents);
+ if(!nodes.siz){makeNode('siz',false);nodes.siz.mesh.material.color.set(0x44dd99);nodes.siz.mesh.material.emissive.set(0x44dd99);nodes.siz.col=0x44dd99}
+ nodes.siz.target.set(0,-3,9);
+ names.forEach(n=>{if(!nodes[n])makeNode(n,agents[n].boss)});
+ const ws=names.filter(n=>!agents[n].boss);
+ names.filter(n=>agents[n].boss).forEach(n=>nodes[n].target.set(0,1,0));
+ ws.forEach((n,i)=>{const a=i/ws.length*Math.PI*2;nodes[n].target.set(Math.cos(a)*7,Math.sin(i*1.7)*1.5,Math.sin(a)*7)});
+ edges.clear();
+ const boss=names.find(n=>agents[n].boss);
+ const link=(a,b)=>{const g=new THREE.BufferGeometry().setFromPoints([nodes[a].target,nodes[b].target]);edges.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:0x2a4080,transparent:true,opacity:.6})))};
+ if(boss){ws.forEach(n=>link(boss,n));link('siz',boss)}
+}
+function packet(from,to){
+ if(!nodes[from]||!nodes[to]||from==to)return;
+ const m=new THREE.Mesh(new THREE.SphereGeometry(.22,12,12),new THREE.MeshBasicMaterial({color:0xffffff}));scene.add(m);
+ packets.push({m,a:nodes[from],b:nodes[to],t:0});
+}
+const clock=new THREE.Clock();
+(function loop(){
+ requestAnimationFrame(loop);const dt=clock.getDelta(),t=clock.elapsedTime;
+ for(const n in nodes){const o=nodes[n];o.mesh.position.lerp(o.target,.06);o.mesh.rotation.y+=dt*.4;
+  const pulse=o.working?1+.15*Math.sin(t*7):1;o.mesh.scale.setScalar(pulse+o.flash);o.flash*=.9;
+  o.mesh.material.emissiveIntensity=o.working?.9:.35;
+  o.mesh.children[0].rotation.z+=dt*(o.working?3:.5)}
+ for(let i=packets.length-1;i>=0;i--){const p=packets[i];p.t+=dt/.9;
+  p.m.position.lerpVectors(p.a.mesh.position,p.b.mesh.position,Math.min(p.t,1));
+  if(p.t>=1){p.b.flash=.35;scene.remove(p.m);packets.splice(i,1)}}
+ ctl.update();rd.render(scene,cam)})();
+addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();rd.setSize(innerWidth,innerHeight)});
+
+// ---- backend ulanishi ----
+const $=id=>document.getElementById(id);let ws,pid=null;
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const backendPort=8766;
+function connect(){ws=new WebSocket(`ws://127.0.0.1:${backendPort}/ws`);
+ ws.onclose=()=>setTimeout(connect,1000);
+ ws.onmessage=e=>{const d=JSON.parse(e.data);
+  if(d.type=='agents')layout(d.agents);
+  if(d.type=='message'){$('log').insertAdjacentHTML('beforeend',`<div class=m><b>${d.from} → ${d.to}:</b> ${esc(d.text)}</div>`);$('log').scrollTop=1e9;
+   if(d.from=='tizim'&&nodes[d.to])nodes[d.to].flash=.25;else packet(d.from,d.to)}
+  if(d.type=='status'&&nodes[d.agent])nodes[d.agent].working=d.state=='ishlayapti';
+  if(d.type=='permission'){pid=d.id;$('pt').textContent=`${d.agent}: ${d.action}`;$('perm').style.display='flex'}}}
+connect();
+window.reply=a=>{ws.send(JSON.stringify({type:'permission_reply',id:pid,allow:a}));$('perm').style.display='none'};
+window.send=()=>{const t=$('t');if(t.value){ws.send(JSON.stringify({type:'task',text:t.value}));t.value=''}};
+window.send_stop=()=>ws.send(JSON.stringify({type:'stop'}));
+$('t').onkeydown=e=>e.key=='Enter'&&window.send();
+</script>

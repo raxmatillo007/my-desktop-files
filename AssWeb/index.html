@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Tech House — Maishiy texnikalar</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .category-card img {
+            height: 170px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .product-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card {
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+     .hero-section {
+    background-image: url("./img/hero.png");
+    background-size:100dv;
+    background-position:bottom;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 480px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.6);
+}
+
+
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="shadow-sm position-sticky top-0 z-3 bg-white" style="height: 70px;">
+    <nav class="navbar navbar-expand-lg bg-white h-100">
+        <div class="container h-100">
+
+            <!-- LOGO -->
+            <a class="navbar-brand fw-bold fs-3 m-0 d-flex align-items-center h-100" href="index.html">
+                Tech House
+            </a>
+
+            <!-- MOBILE MENU -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- MENU -->
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">Bosh sahifa</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="categories.html">Kategoriyalar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="products.html">Mahsulotlar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="compare.html">Taqqoslash</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="cart.html">Savat</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="contact.html">Bog‘lanish</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+
+
+<!-- HERO -->
+<section class="hero-section text-center d-flex align-items-center justify-content-center">
+    <div class="hero-content text-white">
+        <h1 class="fw-bold mb-3">Tech House — Zamonaviy Maishiy Texnikalar</h1>
+        <p class="lead">Sifatli, ishonchli va zamonaviy uy jihozlari do'koni.</p>
+        <a href="products.html" class="btn btn-primary btn-lg mt-3">Mahsulotlarni ko'rish</a>
+    </div>
+</section>
+
+
+
+<!-- ABOUT COMPANY -->
+<section class="container py-5">
+    <h2 class="fw-bold mb-3">Tech House haqida</h2>
+    <p class="text-muted fs-5">
+        Tech House — O'zbekiston bo'ylab eng yirik maishiy texnika yetkazib beruvchi kompaniyalardan biri.
+        Biz oshxona jihozlari, tozalash texnikasi, isitish va sovutish uskunalari, shaxsiy parvarish moslamalari
+        hamda aqlli uy qurilmalarini yetkazib beramiz. Mijozlarimizga 12 oygacha kafolat, tez yetkazib berish
+        va yuqori xizmat sifatini taklif qilamiz.
+    </p>
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold mb-0">Kategoriyalar</h2>
+        <a href="categories.html" class="text-decoration-none">
+            Barchasini ko‘rish →
+        </a>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100">
+                <img src="img/oshxona.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="fw-bold">Oshxona Jihozlari</h5>
+                    <p class="text-muted">Blender, mikser, pech</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100">
+                <img src="img/tozalash.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="fw-bold">Tozalash Texnikasi</h5>
+                    <p class="text-muted">Changyutgichlar</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100">
+                <img src="img/isstish.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="fw-bold">Isitish va Sovutish</h5>
+                    <p class="text-muted">Isitgichlar</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm h-100">
+                <img src="img/aqiluy.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="fw-bold">Aqlli Uy</h5>
+                    <p class="text-muted">Smart qurilmalar</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- MEMBERSHIP PLANS -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">A'zolik tariflari va chegirmalar</h2>
+        <p class="text-muted mb-5">Abuna bo‘ling va barcha mahsulotlarga doimiy chegirmalardan foydalaning.</p>
+
+        <div class="row g-4">
+
+            <!-- Bronze -->
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4 h-100">
+                    <h3 class="fw-bold text-warning">🥉 Bronze</h3>
+                    <h1 class="fw-bold text-warning mt-3">10% OFF</h1>
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>• Doimiy 10% chegirma</li>
+                        <li>• Kichik sovg'alar</li>
+                        <li>• Email orqali aksiyalar</li>
+                        <li>• Oddiy yetkazib berish</li>
+                    </ul>
+
+                    <button class="btn btn-outline-warning w-100">Bronze tarifiga ulanish</button>
+                </div>
+            </div>
+
+            <!-- Silver -->
+            <div class="col-md-4">
+                <div class="card shadow p-4 bg-white h-100">
+                    <h3 class="fw-bold text-secondary">🥈 Silver</h3>
+                    <h1 class="fw-bold text-secondary mt-3">15% OFF</h1>
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>• Doimiy 15% chegirma</li>
+                        <li>• Tez yetkazib berish</li>
+                        <li>• Maxsus promo-kodlar</li>
+                        <li>• 24/7 qo'llab-quvvatlash</li>
+                    </ul>
+
+                    <button class="btn btn-secondary w-100">Silver tarifiga ulanish</button>
+                </div>
+            </div>
+
+            <!-- Gold -->
+            <div class="col-md-4">
+                <div class="card shadow-sm p-4 h-100 border border-warning">
+                    <h3 class="fw-bold text-warning">🥇 Gold</h3>
+                    <h1 class="fw-bold text-warning mt-3">20% OFF</h1>
+
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>• Doimiy 20% chegirma</li>
+                        <li>• Eng tez yetkazib berish</li>
+                        <li>• VIP yordam</li>
+                        <li>• Yopiq maxsus aksiyalar</li>
+                    </ul>
+
+                    <button class="btn btn-warning w-100">Gold tarifiga ulanish</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- TOP PRODUCTS -->
+<section class="container py-5">
+    <h2 class="fw-bold mb-4 text-center">Eng mashhur mahsulotlar</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm product-card">
+                <img src="./img/changyutgich.png" class="card-img-top">
+                <div class="card-body text-center">
+                    <h6 class="fw-bold">Changyutgich Samsung</h6>
+                    <p class="text-primary fw-bold mb-2">6 950 000 so'm</p>
+                    <a href="product-details.html" class="btn btn-primary btn-sm w-100">Ko‘rish</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm product-card">
+                <img src="./img/mikser.png" class="card-img-top">
+                <div class="card-body text-center">
+                    <h6 class="fw-bold">Mikser Bosch 500W</h6>
+                    <p class="text-primary fw-bold mb-2">723 000 so'm</p>
+                    <a href="product-details.html" class="btn btn-primary btn-sm w-100">Ko‘rish</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm product-card">
+                <img src="./img/pech.png" class="card-img-top">
+                <div class="card-body text-center">
+                    <h6 class="fw-bold">Elektr Pech LG</h6>
+                    <p class="text-primary fw-bold mb-2">1 738 000 so'm</p>
+                    <a href="product-details.html" class="btn btn-primary btn-sm w-100">Ko‘rish</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm product-card">
+                <img src="./img/lanpa.png" class="card-img-top">
+                <div class="card-body text-center">
+                    <h6 class="fw-bold">Smart Uy Lampasi</h6>
+                    <p class="text-primary fw-bold mb-2">349 000 so'm</p>
+                    <a href="product-details.html" class="btn btn-primary btn-sm w-100">Ko'rish</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="fw-bold mb-4 text-center">Mijozlar fikri</h2>
+
+        <div class="row g-4 text-center">
+
+            <div class="col-md-4">
+                <div class="card p-4 shadow-sm">
+                    <img src="https://randomuser.me/api/portraits/men/12.jpg" class="testimonial-img mb-3">
+                    <h5 class="fw-bold">Javohir</h5>
+                    <p class="text-muted">“Texnika juda sifatli! Yetkazib berish ham juda tez bo‘ldi. Zo‘r xizmat!”</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-4 shadow-sm">
+                    <img src="https://randomuser.me/api/portraits/women/21.jpg" class="testimonial-img mb-3">
+                    <h5 class="fw-bold">Madina</h5>
+                    <p class="text-muted">“Servis zo'r, narxlar ham judayam maqul. Tavsiya qilaman!”</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-4 shadow-sm">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" class="testimonial-img mb-3">
+                    <h5 class="fw-bold">Sardor</h5>
+                    <p class="text-muted">“Smart uy jihozlari ajoyib ishlayapti. Tech Housega katta rahmat!”</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<footer class="bg-dark text-white mt-5 py-5" style="padding-top: 70px; padding-bottom: 70px;">
+    <div class="container text-center">
+
+        <h5 class="fw-bold mb-3">Tech House</h5>
+
+        <p class="text-white-50 mb-3">
+            Maishiy texnika, aqlli uy jihozlari va elektronika do‘koni.
+        </p>
+
+        <div class="d-flex justify-content-center gap-4 mb-4 flex-wrap">
+
+            <a href="index.html" class="text-white-50 footer-link text-decoration-none">Bosh sahifa</a>
+            <a href="categories.html" class="text-white-50 footer-link text-decoration-none">Kategoriyalar</a>
+            <a href="products.html" class="text-white-50 footer-link text-decoration-none">Mahsulotlar</a>
+            <a href="compare.html" class="text-white-50 footer-link text-decoration-none">Taqqoslash</a>
+            <a href="cart.html" class="text-white-50 footer-link text-decoration-none">Savat</a>
+            <a href="contact.html" class="text-white-50 footer-link text-decoration-none">Bog‘lanish</a>
+
+        </div>
+
+        <hr class="border-secondary">
+
+        <p class="mb-0 small text-white-50">
+            © 2026 Tech House — Barcha huquqlar himoyalangan.
+        </p>
+
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

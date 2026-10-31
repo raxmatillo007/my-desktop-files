@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bir-fayl — Katta Sayt Demo</title>
+<style>
+  :root{
+    --bg:#0b1220; --card:#0f1724; --muted:#9aa4b2; --accent:#06b6d4;
+    --glass: rgba(255,255,255,0.03); --radius:12px; --gap:14px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  }
+  *{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#071022,#061226);color:#e8f0f8;min-height:100vh;display:flex;flex-direction:column}
+  header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:700}
+  nav{display:flex;gap:10px;align-items:center}
+  nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px}
+  nav a.active{color:#fff;background:rgba(255,255,255,0.03)}
+  .layout{display:grid;grid-template-columns:260px 1fr;gap:20px;max-width:1200px;margin:20px auto;padding:0 16px;width:100%}
+  .sidebar{background:var(--card);padding:14px;border-radius:12px;min-height:400px}
+  .content{background:var(--card);padding:20px;border-radius:12px;min-height:400px}
+  .search{display:flex;gap:8px;margin-bottom:12px}
+  .search input{flex:1;padding:8px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+
+  /* cards, grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .card{background:var(--glass);padding:12px;border-radius:10px}
+  .hero{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+  .btn{background:var(--accent);color:#022;padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:600;border:none;cursor:pointer}
+  .muted{color:var(--muted)}
+
+  /* tabs */
+  .tabs{display:flex;gap:8px;margin-bottom:12px}
+  .tabs button{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:8px;color:var(--muted);cursor:pointer}
+  .tabs button.active{background:rgba(255,255,255,0.03);color:#fff}
+
+  /* accordion */
+  .acc-item{border-top:1px solid rgba(255,255,255,0.02);padding:8px 0}
+  .acc-title{display:flex;justify-content:space-between;cursor:pointer}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .25s ease}
+
+  /* modal */
+  .modal-back{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:20px}
+  .modal{background:var(--card);padding:18px;border-radius:12px;max-width:720px;width:100%}
+
+  /* responsive */
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr; padding:8px}
+    .sidebar{order:2}
+    .content{order:1}
+    nav{display:none}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">BF</div>
+      <div>
+        <div style="font-weight:700">Bir-Fayl Sayt</div>
+        <div style="font-size:12px;color:var(--muted)">Katta sayt — bitta HTML</div>
+      </div>
+    </div>
+
+    <nav id="topnav">
+      <a href="#home" data-route="home" class="active">Home</a>
+      <a href="#catalog" data-route="catalog">Catalog</a>
+      <a href="#blog" data-route="blog">Blog</a>
+      <a href="#about" data-route="about">About</a>
+      <a href="#admin" data-route="admin">Admin</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="search">
+        <input id="search" placeholder="Qidirish..." />
+        <button class="btn" onclick="doSearch()">Qidir</button>
+      </div>
+
+      <div class="card" style="margin-bottom:12px">
+        <strong>Kategoriyalar</strong>
+        <ul id="cats" style="padding-left:14px;margin:8px 0 0;color:var(--muted)"></ul>
+      </div>
+
+      <div class="card">
+        <strong>So'ngi yangiliklar</strong>
+        <div id="news" style="margin-top:8px;color:var(--muted);font-size:14px"></div>
+      </div>
+
+      <div style="margin-top:12px" class="muted">Iframe bilan tashqi kontent:</div>
+      <div style="margin-top:8px">
+        <!-- iframe maydon: agar tashqi sayt ruxsat bersa ichida ko'rinadi -->
+        <iframe id="extFrame" src="" style="width:100%;height:160px;border-radius:8px;border:1px solid rgba(255,255,255,0.04)"></iframe>
+        <div style="font-size:12px;color:var(--muted);margin-top:6px">Agar iframe bloklansa — sayt ruxsat bermagan.</div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <!-- ROUTED PAGES -->
+      <section id="page-home" class="page" data-title="Home">
+        <div class="hero">
+          <div style="flex:1">
+            <h1 style="margin:0 0 8px">Bitta faylda katta sayt demo</h1>
+            <p class="muted">Bu SPA-ishlash usulida hash-routing bilan. Menyudan bo‘lim tanlang yoki qidiruvdan foydalaning.</p>
+            <div style="margin-top:10px">
+              <button class="btn" onclick="openModal()">Modal ochish</button>
+              <button class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted);margin-left:8px" onclick="navigate('catalog')">Katalogga o'tish</button>
+            </div>
+          </div>
+          <div style="width:320px">
+            <div class="card">
+              <strong>Quick stats</strong>
+              <div style="display:flex;gap:8px;margin-top:10px">
+                <div style="flex:1">
+                  <div style="font-size:20px;font-weight:700">1.2k</div>
+                  <div class="muted" style="font-size:12px">Foydalanuvchi</div>
+                </div>
+                <div style="flex:1">
+                  <div style="font-size:20px;font-weight:700">420</div>
+                  <div class="muted" style="font-size:12px">Buyurtma</div>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="margin-top:10px">
+              <strong>Tez havolalar</strong>
+              <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+                <a href="#blog" onclick="track('go_blog')">Blogga o'tish</a>
+                <a href="#about" onclick="track('go_about')">Haqida</a>
+                <a href="#admin" onclick="track('go_admin')">Admin</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Yangiliklar</h3>
+        <div id="home-news" class="grid" style="margin-top:10px"></div>
+
+        <h3 style="margin-top:16px">Accordion FAQ</h3>
+        <div id="faq" style="margin-top:8px">
+          <div class="acc-item">
+            <div class="acc-title" onclick="toggleAcc(this)"><div>Sayt nima uchun bitta fayl?</div><div>+</div></div>
+            <div class="acc-body"><div style="padding:8px 0" class="muted">Bitta fayl demo va offline ishlash uchun qulay.</div></div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-title" onclick="toggleAcc(this)"><div>Iframe qachon ishlaydi?</div><div>+</div></div>
+            <div class="acc-body"><div style="padding:8px 0" class="muted">Agar sayt X-Frame-Options yoki CSP orqali ruxsat bersa.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-catalog" class="page" style="display:none" data-title="Catalog">
+        <h2>Katalog</h2>
+        <div class="tabs" id="catalog-tabs">
+          <button class="active" data-tab="all" onclick="switchTab(event)">Hammasi</button>
+          <button data-tab="chairs" onclick="switchTab(event)">Stullar</button>
+          <button data-tab="sofas" onclick="switchTab(event)">Divanlar</button>
+        </div>
+        <div id="catalog-list" class="grid"></div>
+
+        <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+          <div class="muted">Sahifa: <span id="catalog-page">1</span></div>
+          <div>
+            <button class="btn" onclick="prevPage()">Oldingi</button>
+            <button class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.03);color:var(--muted)" onclick="nextPage()">Keyingi</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-blog" class="page" style="display:none" data-title="Blog">
+        <h2>Blog</h2>
+        <div id="posts" class="grid"></div>
+      </section>
+
+      <section id="page-about" class="page" style="display:none" data-title="About">
+        <h2>Biz haqimizda</h2>
+        <p class="muted">Bu bo'limda kompaniya, kontaktlar va jamoa haqida ma'lumot bo'ladi.</p>
+
+        <h3 style="margin-top:12px">Kontakt forma</h3>
+        <form onsubmit="event.preventDefault(); alert('Demo: forma yuborildi (statik)')">
+          <div style="display:flex;gap:8px">
+            <input placeholder="Ism" style="flex:1;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04)" required>
+            <input placeholder="Email" style="flex:1;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04)">
+          </div>
+          <div style="margin-top:8px">
+            <textarea placeholder="Xabar..." rows="4" style="width:100%;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04)"></textarea>
+          </div>
+          <div style="margin-top:8px"><button class="btn">Yuborish</button></div>
+        </form>
+      </section>
+
+      <section id="page-admin" class="page" style="display:none" data-title="Admin">
+        <h2>Admin panel (mahfiy)</h2>
+        <p class="muted">Bu demo admin bo'lim — oddiy CRUD simulyatsiyasi:</p>
+        <div style="margin-top:8px" id="admin-area"></div>
+      </section>
+    </main>
+  </div>
+
+  <footer style="text-align:center;padding:18px;color:var(--muted)">
+    © <span id="yr"></span> Bir-Fayl Sayt — Demo. Saqlang: <code>index.html</code>
+  </footer>
+
+  <!-- modal -->
+  <div id="modalBack" class="modal-back" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <h3>Modal oynasi</h3>
+      <p class="muted">Bu yerga formalar, login yoki batafsil ma'lumot qo'yish mumkin.</p>
+      <div style="text-align:right;margin-top:12px">
+        <button class="btn" onclick="closeModal()">Yopish</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // --- Init ---
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const pages = Array.from(document.querySelectorAll('.page'));
+  const navlinks = Array.from(document.querySelectorAll('#topnav a'));
+  const cats = ['Barchasi','Divan','Stul','Stol','Aksessuar'];
+  const newsList = [
+    {title:'Yangi kollektsiya chiqdi', date:'2025-10-01'},
+    {title:'Sotuvda chegirma haftasi', date:'2025-09-24'},
+    {title:'Blog: Ichki dizayn trend', date:'2025-08-12'},
+  ];
+
+  // render sidebar lists
+  const catsEl = document.getElementById('cats');
+  cats.forEach(c=>{ const li=document.createElement('li'); li.textContent=c; catsEl.appendChild(li); });
+
+  const newsEl = document.getElementById('news');
+  newsList.slice(0,3).forEach(n=>{ const d=document.createElement('div'); d.textContent = n.date + ' — ' + n.title; newsEl.appendChild(d); });
+
+  // sample data for catalog
+  const items = [];
+  for(let i=1;i<=30;i++){
+    items.push({
+      id:i,
+      title:`Mahsulot #${i}`,
+      cat: i%3===0 ? 'Divan' : (i%3===1 ? 'Stul' : 'Stol'),
+      price: (50 + i).toFixed(2),
+      img: 'https://via.placeholder.com/400x300?text=Item+'+i
+    });
+  }
+
+  // sample posts
+  const posts = [];
+  for(let i=1;i<=6;i++){
+    posts.push({id:i,title:'Post sarlavha '+i, excerpt:'Qisqacha mazmun ' + i});
+  }
+
+  // render initial lists
+  function renderHomeNews(){ const homeNews = document.getElementById('home-news'); homeNews.innerHTML=''; newsList.forEach(n=>{ const c=document.createElement('div'); c.className='card'; c.innerHTML = '<strong>'+n.title+'</strong><div class="muted" style="font-size:13px">'+n.date+'</div>'; homeNews.appendChild(c); }) }
+  renderHomeNews();
+
+  function renderCatalog(page=1, per=8, filter='all'){
+    const list = document.getElementById('catalog-list'); list.innerHTML='';
+    let filtered = items.filter(it=> filter==='all' ? true : it.cat.toLowerCase()===filter);
+    const total = filtered.length;
+    const start = (page-1)*per; const pageItems = filtered.slice(start,start+per);
+    pageItems.forEach(it=>{
+      const el = document.createElement('div'); el.className='card';
+      el.innerHTML = '<img src="'+it.img+'" alt="" style="width:100%;border-radius:8px;margin-bottom:8px"><div style="font-weight:600">'+it.title+'</div><div class="muted">$'+it.price+'</div><div style="margin-top:8px"><button class="btn" onclick="showProduct('+it.id+')">Ko\'rish</button></div>';
+      list.appendChild(el);
+    });
+    document.getElementById('catalog-page').textContent = page;
+  }
+  renderCatalog();
+
+  function renderPosts(){
+    const el = document.getElementById('posts'); el.innerHTML='';
+    posts.forEach(p=>{ const c=document.createElement('div'); c.className='card'; c.innerHTML = '<strong>'+p.title+'</strong><div class="muted" style="font-size:13px">'+p.excerpt+'</div><div style="margin-top:8px"><a href="#blog/post/'+p.id+'">Batafsil</a></div>'; el.appendChild(c); });
+  }
+  renderPosts();
+
+  // Routing (hash-based)
+  function showPage(name){
+    pages.forEach(p=> p.style.display = (p.id === 'page-'+name) ? '' : 'none');
+    navlinks.forEach(a=> a.classList.toggle('active', a.getAttribute('data-route')===name));
+    // set iframe example for certain pages
+    const frame = document.getElementById('extFrame');
+    if(name==='catalog') frame.src = 'https://example.com'; else frame.src = '';
+    // update title
+    const page = document.querySelector('#page-'+name);
+    if(page) document.title = page.getAttribute('data-title') + ' — Bir-Fayl Sayt';
+  }
+
+  function navigate(name){
+    location.hash = name;
+  }
+
+  function handleHash(){
+    const hash = location.hash.replace('#','') || 'home';
+    // support nested like blog/post/1
+    const route = hash.split('/')[0];
+    showPage(route);
+  }
+  window.addEventListener('hashchange', handleHash);
+  handleHash(); // initial
+
+  // menu links click handler to prevent page jump (optional)
+  navlinks.forEach(a=> a.addEventListener('click', ()=>{}));
+
+  // tabs
+  function switchTab(e){
+    const btn = e.currentTarget;
+    Array.from(btn.parentElement.children).forEach(b=>b.classList.toggle('active', b===btn));
+    const tab = btn.getAttribute('data-tab');
+    // map tab to filter
+    const map = {all:'all', chairs:'stul', sofas:'divan'};
+    renderCatalog(1,8,map[tab] || 'all');
+  }
+
+  // pagination simple
+  let catalogPage = 1;
+  function nextPage(){ catalogPage++; renderCatalog(catalogPage); }
+  function prevPage(){ if(catalogPage>1) catalogPage--; renderCatalog(catalogPage); }
+
+  // product modal / details
+  function showProduct(id){
+    const prod = items.find(i=>i.id===id);
+    if(!prod) return alert('Topilmadi');
+    const modalBack = document.getElementById('modalBack');
+    const modal = modalBack.querySelector('.modal');
+    modal.innerHTML = '<h3>'+prod.title+'</h3><img src="'+prod.img+'" style="width:100%;border-radius:8px;margin-top:8px"><p class="muted">Narx: $'+prod.price+'</p><div style="text-align:right;margin-top:8px"><button class="btn" onclick="closeModal()">Yopish</button></div>';
+    modalBack.style.display = 'flex';
+  }
+  function openModal(){ document.getElementById('modalBack').style.display='flex'; }
+  function closeModal(e){ if(e && e.target && e.target.id!=='modalBack') return; document.getElementById('modalBack').style.display='none'; }
+
+  // accordion
+  function toggleAcc(el){
+    const body = el.nextElementSibling;
+    if(body.style.maxHeight && body.style.maxHeight!=='0px'){ body.style.maxHeight = '0'; el.querySelector('div:last-child').textContent='+'; }
+    else { body.style.maxHeight = body.scrollHeight + 'px'; el.querySelector('div:last-child').textContent='-'; }
+  }
+
+  // search (very simple)
+  function doSearch(){
+    const q = document.getElementById('search').value.trim().toLowerCase();
+    if(!q) return alert('Qidiruv so\'rov kiriting');
+    // search titles in items and posts
+    const foundItems = items.filter(i=> i.title.toLowerCase().includes(q));
+    const foundPosts = posts.filter(p=> p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q));
+    // show result in main content as quick view
+    const content = document.querySelector('.content');
+    const prev = document.getElementById('search-results');
+    if(prev) prev.remove();
+    const wrap = document.createElement('div'); wrap.id='search-results'; wrap.style.marginTop='12px';
+    wrap.innerHTML = '<h3>Qidiruv natijalari: "'+q+'"</h3>';
+    const grid = document.createElement('div'); grid.className='grid';
+    foundItems.slice(0,8).forEach(it=>{ const c=document.createElement('div'); c.className='card'; c.innerHTML = '<strong>'+it.title+'</strong><div class="muted">$'+it.price+'</div>'; grid.appendChild(c); });
+    foundPosts.slice(0,8).forEach(p=>{ const c=document.createElement('div'); c.className='card'; c.innerHTML = '<strong>'+p.title+'</strong><div class="muted">'+p.excerpt+'</div>'; grid.appendChild(c); });
+    wrap.appendChild(grid);
+    content.prepend(wrap);
+    // jump to top of content
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  // admin demo CRUD
+  function renderAdmin(){
+    const area = document.getElementById('admin-area');
+    area.innerHTML = '<div style="display:flex;gap:8px"><input id="newName" placeholder="Yangi mahsulot nomi" style="flex:1;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04)"><button class="btn" onclick="addItem()">Qo\'shish</button></div><div id="admin-list" style="margin-top:8px"></div>';
+    updateAdminList();
+  }
+
+  function updateAdminList(){
+    const el = document.getElementById('admin-list'); el.innerHTML='';
+    items.slice(0,8).forEach(it=>{ const r = document.createElement('div'); r.className='card'; r.style.display='flex'; r.style.justifyContent='space-between'; r.innerHTML = '<div><strong>'+it.title+'</strong><div class="muted">ID: '+it.id+'</div></div><div><button class="btn" onclick="removeItem('+it.id+')">O\'chirish</button></div>'; el.appendChild(r); });
+  }
+
+  function addItem(){
+    const name = document.getElementById('newName').value.trim();
+    if(!name) return alert('Nom kiriting');
+    const id = items.length + 1;
+    items.unshift({id:id,title:name,cat:'Aksessuar',price:'9.99',img:'https://via.placeholder.com/400x300?text='+encodeURIComponent(name)});
+    updateAdminList();
+    document.getElementById('newName').value='';
+    alert('Qo\'shildi (statik demo)');
+  }
+
+  function removeItem(id){
+    const idx = items.findIndex(i=>i.id===id);
+    if(idx>-1) items.splice(idx,1);
+    updateAdminList();
+    alert('O\'chirildi (statik demo)');
+  }
+
+  // track simple clicks
+  function track(ev){ console.log('track:',ev); }
+
+  // when admin page shown render admin
+  window.addEventListener('hashchange', ()=>{ if(location.hash.replace('#','').split('/')[0]==='admin') renderAdmin(); });
+  if(location.hash.replace('#','').split('/')[0]==='admin') renderAdmin();
+
+  // small UX: open post if url like #blog/post/1
+  function handleSpecialRoutes(){
+    const hash = location.hash.replace('#','');
+    const parts = hash.split('/');
+    if(parts[0]==='blog' && parts[1]==='post' && parts[2]){
+      showPage('blog');
+      const pid = parseInt(parts[2],10);
+      alert('Post: ' + pid + ' (statik demo)');
+    }
+  }
+  handleSpecialRoutes();
+  window.addEventListener('hashchange', handleSpecialRoutes);
+</script>
+</body>
+</html>

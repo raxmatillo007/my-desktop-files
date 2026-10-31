@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^25.6.0"
+  },
+  "dependencies": {
+    "inquirer": "^13.4.2",
+    "qr-image": "^3.2.0",
+    "superheroes": "^4.0.0"
+  }
+}

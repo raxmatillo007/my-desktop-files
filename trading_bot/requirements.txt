@@ -1,0 +1,7 @@
+python-telegram-bot==21.3
+aiohttp==3.9.5
+numpy==1.26.4
+apscheduler==3.10.4
+flask==3.0.3
+python-dotenv==1.0.1
+MetaTrader5==5.0.45

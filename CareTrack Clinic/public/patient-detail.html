@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bemor tafsilotlari — CareTrack Clinic</title>
+  <link rel="stylesheet" href="/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container">
+    <a href="/patients.html" class="back-link">&#8592; Bemorlar ro'yxatiga qaytish</a>
+
+    <div class="detail-grid" id="detailGrid">
+      <!-- Left column -->
+      <div>
+        <div class="card" id="patientCard" style="margin-bottom:16px;">
+          <div class="section-title">Shaxsiy ma'lumotlar</div>
+          <div id="patientInfo"><div class="empty">Yuklanmoqda...</div></div>
+        </div>
+        <div class="card" id="doctorCard">
+          <div class="section-title">Biriktirilgan shifokor</div>
+          <div id="doctorInfo"><div class="empty">Yuklanmoqda...</div></div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div>
+        <div class="page-header" style="margin-bottom:12px;">
+          <h2 class="section-title" style="margin-bottom:0;">Tashxislar</h2>
+          <button class="btn btn-primary btn-sm" id="btnAddDx" onclick="openAddDx()">+ Tashxis qo'shish</button>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>ICD Kod</th>
+                <th>Sarlavha</th>
+                <th>Og'irlik</th>
+                <th>Shifokor</th>
+                <th>Sana</th>
+                <th>Amallar</th>
+              </tr>
+            </thead>
+            <tbody id="dxTbody">
+              <tr><td colspan="6" class="empty">Yuklanmoqda...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diagnosis Modal -->
+  <div class="modal-overlay" id="dxModal">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title" id="dxModalTitle">Tashxis qo'shish</span>
+        <button class="modal-close" onclick="closeDxModal()">&times;</button>
+      </div>
+      <form id="dxForm">
+        <div class="form-group">
+          <label>ICD Kod</label>
+          <input type="text" id="dxIcd" placeholder="Masalan: I10"/>
+        </div>
+        <div class="form-group">
+          <label>Sarlavha</label>
+          <input type="text" id="dxTitle" placeholder="Tashxis nomi"/>
+        </div>
+        <div class="form-group">
+          <label>Tavsif</label>
+          <textarea id="dxDesc" placeholder="Qo'shimcha ma'lumot..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Og'irlik darajasi *</label>
+          <select id="dxSeverity" required>
+            <option value="">Tanlang</option>
+            <option value="mild">Yengil</option>
+            <option value="moderate">O'rta</option>
+            <option value="severe">Og'ir</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Shifokor</label>
+          <select id="dxDoctor">
+            <option value="">Shifokor tanlanmagan</option>
+          </select>
+        </div>
+        <div id="dxFormError" class="error-msg" style="display:none;"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeDxModal()">Bekor qilish</button>
+          <button type="submit" class="btn btn-primary">Saqlash</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/patient-detail.js"></script>
+</body>
+</html>

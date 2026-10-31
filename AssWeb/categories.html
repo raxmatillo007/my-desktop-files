@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Kategoriyalar — Tech House</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .category-card img {
+            height: 180px;
+            object-fit: cover;
+        }
+        .category-card:hover {
+            transform: translateY(-3px);
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="shadow-sm position-sticky top-0 z-3 bg-white" style="height: 70px;">
+    <nav class="navbar navbar-expand-lg bg-white h-100">
+        <div class="container h-100">
+
+            <!-- LOGO -->
+            <a class="navbar-brand fw-bold fs-3 m-0 d-flex align-items-center h-100" href="index.html">
+                Tech House
+            </a>
+
+            <!-- MOBILE MENU -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- MENU -->
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">Bosh sahifa</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="categories.html">Kategoriyalar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="products.html">Mahsulotlar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="compare.html">Taqqoslash</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="cart.html">Savat</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="contact.html">Bog‘lanish</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+
+
+<!-- TITLE -->
+<div class="container mb-4">
+    <h2 class="fw-bold">Barcha kategoriyalar</h2>
+    <p class="text-muted">Kerakli bo‘limni tanlang va mahsulotlarni ko‘ring</p>
+</div>
+
+
+<!-- CATEGORIES LIST -->
+<div class="container pb-5">
+    <div class="row g-4">
+
+        <!-- 1 -->
+        <div class="col-md-3">
+            <a href="products.html" class="text-decoration-none text-dark">
+                <div class="card category-card shadow-sm h-100">
+                    <img src="img/oshxona.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Oshxona Jihozlari</h5>
+                        <p class="text-muted mb-0">Blender, mikser, pech</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 2 -->
+        <div class="col-md-3">
+            <a href="products.html" class="text-decoration-none text-dark">
+                <div class="card category-card shadow-sm h-100">
+                    <img src="img/tozalash.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Tozalash Texnikasi</h5>
+                        <p class="text-muted mb-0">Changyutgichlar</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 3 -->
+        <div class="col-md-3">
+            <a href="products.html" class="text-decoration-none text-dark">
+                <div class="card category-card shadow-sm h-100">
+                    <img src="img/isstish.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Isitish va Sovutish</h5>
+                        <p class="text-muted mb-0">Isitgich, konditsioner</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 4 -->
+        <div class="col-md-3">
+            <a href="products.html" class="text-decoration-none text-dark">
+                <div class="card category-card shadow-sm h-100">
+                    <img src="img/aqiluy.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Aqlli Uy</h5>
+                        <p class="text-muted mb-0">Smart qurilmalar</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 5 -->
+        <div class="col-md-3">
+            <a href="products.html" class="text-decoration-none text-dark">
+                <div class="card category-card shadow-sm h-100">
+                    <img src="img/dazmol.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Kichik Maishiy Texnika</h5>
+                        <p class="text-muted mb-0">Fen, dazmol</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 6 -->
+        <div class="col-md-3">
+            <a href="products.html" class="text-decoration-none text-dark">
+                <div class="card category-card shadow-sm h-100">
+                    <img src="img/robot.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Robot Texnika</h5>
+                        <p class="text-muted mb-0">Robot changyutgich</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 7 -->
+        <div class="col-md-3">
+            <a href="products.html" class="text-decoration-none text-dark">
+                <div class="card category-card shadow-sm h-100">
+                    <img src="img/iqlim.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Iqlim Texnikasi</h5>
+                        <p class="text-muted mb-0">Ventilyatorlar</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 8 -->
+        <div class="col-md-3">
+            <a href="products.html" class="text-decoration-none text-dark">
+                <div class="card category-card shadow-sm h-100">
+                    <img src="img/smart.png" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="fw-bold">Smart Gadjetlar</h5>
+                        <p class="text-muted mb-0">Sensorlar</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+<footer class="bg-dark text-white mt-5 py-5" style="padding-top: 70px; padding-bottom: 70px;">
+    <div class="container text-center">
+
+        <h5 class="fw-bold mb-3">Tech House</h5>
+
+        <p class="text-white-50 mb-3">
+            Maishiy texnika, aqlli uy jihozlari va elektronika do‘koni.
+        </p>
+
+        <div class="d-flex justify-content-center gap-4 mb-4 flex-wrap">
+
+            <a href="index.html" class="text-white-50 footer-link text-decoration-none">Bosh sahifa</a>
+            <a href="categories.html" class="text-white-50 footer-link text-decoration-none">Kategoriyalar</a>
+            <a href="products.html" class="text-white-50 footer-link text-decoration-none">Mahsulotlar</a>
+            <a href="compare.html" class="text-white-50 footer-link text-decoration-none">Taqqoslash</a>
+            <a href="cart.html" class="text-white-50 footer-link text-decoration-none">Savat</a>
+            <a href="contact.html" class="text-white-50 footer-link text-decoration-none">Bog‘lanish</a>
+
+        </div>
+
+        <hr class="border-secondary">
+
+        <p class="mb-0 small text-white-50">
+            © 2026 Tech House — Barcha huquqlar himoyalangan.
+        </p>
+
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

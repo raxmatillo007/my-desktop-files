@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bemorlar — CareTrack Clinic</title>
+  <link rel="stylesheet" href="/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Bemorlar</h1>
+      <button class="btn btn-primary" id="btnAdd" onclick="openAdd()">+ Bemor qo'shish</button>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" id="searchName" placeholder="Ism bo'yicha qidirish..." style="min-width:200px;"/>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>To'liq ism</th>
+            <th>Tug'ilgan sana</th>
+            <th>Jinsi</th>
+            <th>Telefon</th>
+            <th>Shifokor</th>
+            <th>Amallar</th>
+          </tr>
+        </thead>
+        <tbody id="patientsTbody">
+          <tr><td colspan="7" class="empty">Yuklanmoqda...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle">Bemor qo'shish</span>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <form id="patientForm">
+        <div class="form-group">
+          <label>To'liq ism *</label>
+          <input type="text" id="fName" required placeholder="Familiya Ism Sharif"/>
+        </div>
+        <div class="form-group">
+          <label>Tug'ilgan sana</label>
+          <input type="date" id="fDob"/>
+        </div>
+        <div class="form-group">
+          <label>Jinsi</label>
+          <select id="fGender">
+            <option value="">Tanlang</option>
+            <option value="Male">Erkak</option>
+            <option value="Female">Ayol</option>
+            <option value="Other">Boshqa</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Manzil</label>
+          <input type="text" id="fAddress" placeholder="Shahar, ko'cha"/>
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="text" id="fPhone" placeholder="+998 90 000 00 00"/>
+        </div>
+        <div class="form-group">
+          <label>Shifokor</label>
+          <select id="fDoctor">
+            <option value="">Shifokor tayinlanmagan</option>
+          </select>
+        </div>
+        <div id="formError" class="error-msg" style="display:none;"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Bekor qilish</button>
+          <button type="submit" class="btn btn-primary">Saqlash</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/patients.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shifokorlar — CareTrack Clinic</title>
+  <link rel="stylesheet" href="/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Shifokorlar</h1>
+      <button class="btn btn-primary" id="btnAdd" onclick="openAdd()">+ Shifokor qo'shish</button>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" id="searchName" placeholder="Ism bo'yicha qidirish..." style="min-width:200px;"/>
+      <select id="filterSpecialty">
+        <option value="">Barcha mutaxassisliklar</option>
+      </select>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>To'liq ism</th>
+            <th>Mutaxassislik</th>
+            <th>Bo'lim</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>Amallar</th>
+          </tr>
+        </thead>
+        <tbody id="doctorsTbody">
+          <tr><td colspan="7" class="empty">Yuklanmoqda...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle">Shifokor qo'shish</span>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <form id="doctorForm">
+        <div class="form-group">
+          <label>To'liq ism *</label>
+          <input type="text" id="fName" required placeholder="Familiya Ism Sharif"/>
+        </div>
+        <div class="form-group">
+          <label>Mutaxassislik</label>
+          <input type="text" id="fSpecialty" placeholder="Masalan: Kardiolog"/>
+        </div>
+        <div class="form-group">
+          <label>Bo'lim</label>
+          <input type="text" id="fDepartment" placeholder="Masalan: Yurak-qon tomir bo'limi"/>
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="text" id="fPhone" placeholder="+998 90 000 00 00"/>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="fEmail" placeholder="example@email.com"/>
+        </div>
+        <div id="formError" class="error-msg" style="display:none;"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Bekor qilish</button>
+          <button type="submit" class="btn btn-primary" id="btnSave">Saqlash</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- View Modal -->
+  <div class="modal-overlay" id="viewModal">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Shifokor ma'lumotlari</span>
+        <button class="modal-close" onclick="closeViewModal()">&times;</button>
+      </div>
+      <div id="viewContent"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeViewModal()">Yopish</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/doctors.js"></script>
+</body>
+</html>

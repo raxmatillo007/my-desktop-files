@@ -1,0 +1,129 @@
+/* style.css - Figma dizayniga yaqin o'lchamlar va stillar */
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #111;
+  background: #fff;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1320px !important; /* Figma kitlarda odatda 1440 container */
+}
+
+.navbar {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #eee;
+  padding: 1.25rem 0;
+  z-index: 1030;
+}
+
+.logo {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+}
+
+.nav-link {
+  font-weight: 500;
+  color: #111 !important;
+  margin: 0 1.25rem;
+}
+
+.hero-title {
+  font-size: clamp(5rem, 10vw, 9rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -3px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  color: #666;
+  margin: 1.5rem 0 3rem;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+}
+
+.product-card img {
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.06);
+}
+
+.add-btn {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.3rem;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.product-card:hover .add-btn {
+  opacity: 1;
+}
+
+.approach-text {
+  max-width: 800px;
+  margin: 0 auto 5rem;
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+}
+
+footer {
+  background: #000;
+  color: #ccc;
+  padding: 6rem 0 3rem;
+}
+
+.footer-logo {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -2px;
+}
+
+footer a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+/* Mobile adjustments */
+@media (max-width: 992px) {
+  .hero-title { font-size: clamp(4rem, 12vw, 6rem); }
+  .section-title { font-size: 3rem; }
+}

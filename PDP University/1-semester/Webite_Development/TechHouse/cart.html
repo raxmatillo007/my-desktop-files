@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xarid Qilish Sumkasi - TechHouse</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .cart-page {
+            background-color: #f9f9f9;
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .cart-title {
+            font-weight: 900;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #000;
+        }
+
+        .cart-breadcrumb {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cart-breadcrumb span {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .cart-items-container {
+            background-color: white;
+            border-radius: 0.375rem;
+            border: 1px solid #e0e0e0;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr 100px 70px;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+            background-color: #f5f5f5;
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-info h6 {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #000;
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-info p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #000;
+            text-align: center;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-input {
+            width: 70px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            color: #000;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-input:focus {
+            outline: none;
+            border-color: #000;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Style number input spinner */
+        .quantity-input::-webkit-outer-spin-button,
+        .quantity-input::-webkit-inner-spin-button {
+            -webkit-appearance: outer-spin-button;
+            appearance: outer-spin-button;
+            opacity: 1;
+            height: 40px;
+        }
+
+
+        .empty-cart-message {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #666;
+        }
+
+        .empty-cart-message p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-cart-message a {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .empty-cart-message a:hover {
+            background-color: #222;
+        }
+
+        .order-summary-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.375rem;
+            border: 1px solid #e0e0e0;
+            top: 100px;
+        }
+
+        .order-summary-title {
+            font-weight: 900;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            font-size: 0.9rem;
+            color: #666;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .summary-row-label {
+            color: #333;
+        }
+
+        .summary-row-value {
+            font-weight: 600;
+            color: #000;
+        }
+
+        .summary-row.total {
+            padding: 1rem 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            margin: 1rem 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #000;
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .terms-checkbox input {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .checkout-btn:hover {
+            background-color: #222;
+        }
+
+        .checkout-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .summary-note {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.75rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 992px) {
+            .order-summary-card {
+                position: static;
+                top: auto;
+                margin-bottom: 2rem;
+            }
+
+            .cart-item {
+                grid-template-columns: 100px 1fr 80px 60px;
+                gap: 1rem;
+            }
+
+            .cart-item-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cart-page {
+                padding: 1rem 0;
+            }
+
+            .cart-title {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .cart-items-container {
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cart-item {
+                grid-template-columns: 80px 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .cart-item-price,
+            .quantity-selector {
+                grid-column: 2;
+                margin-top: 0.75rem;
+            }
+
+            .cart-item-image {
+                width: 80px;
+                height: 80px;
+                grid-row: 1 / 3;
+            }
+
+            .order-summary-card {
+                padding: 1.5rem;
+            }
+
+            .checkout-btn {
+                padding: 0.75rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+   <header style="position: fixed; width: 100%;" class="bg-white border-bottom">
+        <div class="container-lg">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <div class="container-fluid px-0">
+                    <a class="navbar-brand fw-bold fs-3" href="index.html">TechHouse</a>
+                    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Bosh sahifa</a></li>
+                            <li class="nav-item"><a class="nav-link" href="categories.html">Kategoriyalar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="products.html">Mahsulotlar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Biz haqimizda</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="d-flex gap-2 ms-3">
+                        <a href="index.html" class="text-dark p-2 d-inline-flex align-items-center">
+                         <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3 13h1v7c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h1c.4 0 .77-.24.92-.62.15-.37.07-.8-.22-1.09l-8.99-9a.996.996 0 0 0-1.41 0l-9.01 9c-.29.29-.37.72-.22 1.09s.52.62.92.62Zm7 7v-5h4v5zm2-15.59 6 6V20h-2v-5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v5H6v-9.59z"></path>
+                         </svg>
+                        </a>
+
+                     <a href="#" class="text-dark p-2 d-inline-flex align-items-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M2.21 9.39c-.19.25-.25.57-.17.87l2.8 10.26c.24.87 1.03 1.47 1.93 1.47h10.47c.9 0 1.69-.61 1.93-1.47l2.8-10.26c.08-.3.02-.62-.17-.87a.99.99 0 0 0-.79-.39h-1.42l-3.71-6.5-1.74.99 3.15 5.5H6.72l3.15-5.5-1.74-.99L4.42 9H3a1 1 0 0 0-.79.39M17.24 20H6.76l-2.45-9h15.38z"></path>    <path d="M9 13h2v5H9zm4 0h2v5h-2z"></path>
+                          </svg>
+                    </a>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CART SECTION -->
+    <section class="cart-page">
+        <div class="container-lg">
+            <!-- PAGE TITLE -->
+            <h1 class="cart-title">XARID QILISH SUMKASI</h1>
+
+            <!-- BREADCRUMB -->
+            <div class="cart-breadcrumb">
+                <span>SAVATCHDA</span> > <span>TANLANGANLAR</span>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="row">
+                <!-- CART ITEMS - LEFT -->
+                <div class="col-lg-7">
+                    <div class="cart-items-container">
+                        <!-- CART ITEM 1 -->
+                        <div class="cart-item">
+                            <div class="cart-item-image">
+                                <img src="img/muzlatkich.png" alt="Muzlatkich Ferre NF-440">
+                            </div>
+                            <div class="cart-item-info">
+                                <h6>Muzlatkich Ferre NF-440</h6>
+                                <p>Model: NF-440-2024</p>
+                            </div>
+
+                            <div class="cart-item-price">
+                                5,500,000 so'm
+                            </div>
+
+                            <div class="quantity-selector">
+                                <input type="number" class="quantity-input" value="1" min="1" max="99">
+                            </div>
+                        </div>
+
+                        <!-- CART ITEM 2 -->
+                        <div class="cart-item">
+                            <div class="cart-item-image">
+                                <img src="img/muzlatkich.png" alt="Muzlatkich Ferre NF-440">
+                            </div>
+
+                            <div class="cart-item-info">
+                                <h6>Muzlatkich Ferre NF-440</h6>
+                                <p>Model: NF-440-2024</p>
+                            </div>
+
+                            <div class="cart-item-price">
+                                5,500,000 so'm
+                            </div>
+
+                            <div class="quantity-selector">
+                                <input type="number" class="quantity-input" value="1" min="1" max="99">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ORDER SUMMARY - RIGHT -->
+                <div class="col-lg-5">
+                    <div class="order-summary-card">
+                        <h3 class="order-summary-title">Buyurtma Xulosasi</h3>
+
+                        <div class="summary-row">
+                            <span class="summary-row-label">Qirilayotgan jami:</span>
+                            <span class="summary-row-value">11,000,000 so'm</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span class="summary-row-label">Yetkazib berish:</span>
+                            <span class="summary-row-value">Hisoblangan</span>
+                        </div>
+
+                        <div class="summary-row total">
+                            <span>JAMI:</span>
+                            <span>11,000,000 so'm</span>
+                        </div>
+
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="terms" checked>
+                            <label for="terms">Shartlarga rozi man</label>
+                        </div>
+
+                        <a href="checkout.html" class="text-decoration-none">
+                            <button class="checkout-btn">DAVOM ETISH</button>
+                        </a>
+
+                        <div class="summary-note">
+                            Yetkazib berish natijalari qidrish hisoblashiladi.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- FOOTER -->
+    <footer class="bg-light border-top py-5">
+        <div class="container-lg">
+            <div class="row mb-5">
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h6 class="fw-bold mb-3">Sozlamalar</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="products.html" class="text-decoration-none text-muted small">Mahsulotlar</a></li>
+                        <li><a href="categories.html" class="text-decoration-none text-muted small">Kategoriyalar</a></li>
+                        <li><a href="biz-haqimizda.html" class="text-decoration-none text-muted small">Biz haqimizda</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h6 class="fw-bold mb-3">Havolalar</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="blog.html" class="text-decoration-none text-muted small">Blog</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted small">Aloqa</a></li>
+                        <li><a href="blog.html" class="text-decoration-none text-muted small">Shartlar</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h6 class="fw-bold mb-3">Qo'llab-quvvatlash</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="faq.html" class="text-decoration-none text-muted small">FAQ</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted small">Aloqa markazi</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted small">Qaytarish siyosati</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 text-md-end">
+                    <h1 class="display-5 fw-bold mb-0">TECH</h1>
+                    <h1 class="display-5 fw-bold">HOUSE</h1>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <p class="text-center text-muted small mt-4">© 2024 TechHouse. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

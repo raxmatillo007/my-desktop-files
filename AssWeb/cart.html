@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Savat — Tech House</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .cart-img {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .footer-link:hover {
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="shadow-sm position-sticky top-0 z-3 bg-white" style="height: 70px;">
+    <nav class="navbar navbar-expand-lg bg-white h-100">
+        <div class="container h-100">
+
+            <!-- LOGO -->
+            <a class="navbar-brand fw-bold fs-3 m-0 d-flex align-items-center h-100" href="index.html">
+                Tech House
+            </a>
+
+            <!-- MOBILE MENU -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- MENU -->
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">Bosh sahifa</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="categories.html">Kategoriyalar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="products.html">Mahsulotlar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="compare.html">Taqqoslash</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="cart.html">Savat</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="contact.html">Bog‘lanish</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+
+
+
+
+<!-- TITLE -->
+<div class="container mb-4">
+    <h2 class="fw-bold">Savat</h2>
+    <p class="text-muted">Siz tanlagan mahsulotlar ro‘yxati</p>
+</div>
+
+
+<!-- CART LIST -->
+<div class="container pb-5">
+
+    <div class="card mb-3 shadow-sm p-3 d-flex align-items-center flex-row">
+        <img src="img/mikser.png" class="cart-img me-3">
+        <div class="flex-grow-1">
+            <h6 class="fw-bold mb-1">Mikser Bosch 500W</h6>
+            <small class="text-muted">Oshxona jihozlari</small>
+        </div>
+        <div class="fw-bold text-primary me-3">723,000 so'm</div>
+        <select class="form-select w-auto me-3">
+            <option>1</option><option>2</option><option>3</option>
+        </select>
+        <button class="btn btn-outline-danger btn-sm">O‘chirish</button>
+    </div>
+
+    <div class="card mb-3 shadow-sm p-3 d-flex align-items-center flex-row">
+        <img src="img/changyutgich.png" class="cart-img me-3">
+        <div class="flex-grow-1">
+            <h6 class="fw-bold mb-1">Changyutgich Samsung</h6>
+            <small class="text-muted">Tozalash texnikasi</small>
+        </div>
+        <div class="fw-bold text-primary me-3">6,950,000 so'm</div>
+        <select class="form-select w-auto me-3">
+            <option>1</option><option>2</option><option>3</option>
+        </select>
+        <button class="btn btn-outline-danger btn-sm">O‘chirish</button>
+    </div>
+
+
+    <div class="card p-4 shadow-sm mt-4">
+        <h5 class="fw-bold mb-3">Jami summa: 7,673,000 so'm</h5>
+        <a href="checkout.html" class="btn btn-primary btn-lg w-100">Buyurtmani rasmiylashtirish</a>
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white mt-5 py-5">
+    <div class="container text-center">
+
+        <h5 class="fw-bold mb-3">Tech House</h5>
+        <p class="text-white-50 mb-3">Maishiy texnika, elektronika va aqlli uy jihozlari do‘koni.</p>
+
+        <div class="d-flex justify-content-center gap-4 flex-wrap mb-4">
+            <a href="index.html" class="text-white-50 footer-link">Bosh sahifa</a>
+            <a href="categories.html" class="text-white-50 footer-link">Kategoriyalar</a>
+            <a href="products.html" class="text-white-50 footer-link">Mahsulotlar</a>
+            <a href="compare.html" class="text-white-50 footer-link">Taqqoslash</a>
+            <a href="cart.html" class="text-white-50 footer-link">Savat</a>
+            <a href="contact.html" class="text-white-50 footer-link">Bog‘lanish</a>
+        </div>
+
+        <hr class="border-secondary">
+
+        <p class="small text-white-50 mb-0">© 2026 Tech House — Barcha huquqlar himoyalangan.</p>
+
+    </div>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

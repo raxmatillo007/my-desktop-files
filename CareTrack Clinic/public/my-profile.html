@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mening profilim — CareTrack Clinic</title>
+  <link rel="stylesheet" href="/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="profile-banner">
+    <div class="profile-avatar">
+      <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="14" r="7" fill="white" opacity=".9"/>
+        <path d="M6 36c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="white" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+      </svg>
+    </div>
+    <div>
+      <div class="profile-banner-name" id="bannerName">Bemor</div>
+      <div class="profile-banner-sub">CareTrack Clinic — Bemor portali</div>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top:24px;">
+
+    <!-- Personal info + doctor cards side by side -->
+    <div class="profile-grid">
+      <div class="card">
+        <div class="section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;margin-right:6px;">
+            <circle cx="12" cy="8" r="4" stroke="#0891b2" stroke-width="2"/>
+            <path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="#0891b2" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Shaxsiy ma'lumotlar
+        </div>
+        <div id="profileInfo"><div class="empty">Yuklanmoqda...</div></div>
+      </div>
+      <div class="card">
+        <div class="section-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;margin-right:6px;">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="#0891b2" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Biriktirilgan shifokor
+        </div>
+        <div id="doctorInfo"><div class="empty">Yuklanmoqda...</div></div>
+      </div>
+    </div>
+
+    <!-- Diagnosis history -->
+    <div class="card">
+      <div class="section-title" style="margin-bottom:14px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px;margin-right:6px;">
+          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#0891b2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Tashxislar tarixi
+      </div>
+      <div class="table-wrapper" style="box-shadow:none;">
+        <table>
+          <thead>
+            <tr>
+              <th>ICD Kod</th>
+              <th>Sarlavha</th>
+              <th>Og'irlik</th>
+              <th>Shifokor</th>
+              <th>Sana</th>
+            </tr>
+          </thead>
+          <tbody id="dxTbody">
+            <tr><td colspan="5" class="empty">Yuklanmoqda...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/my-profile.js"></script>
+</body>
+</html>

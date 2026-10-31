@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Mahsulotlar — Tech House</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="shadow-sm position-sticky top-0 z-3 bg-white" style="height: 70px;">
+    <nav class="navbar navbar-expand-lg bg-white h-100">
+        <div class="container h-100">
+
+            <!-- LOGO -->
+            <a class="navbar-brand fw-bold fs-3 m-0 d-flex align-items-center h-100" href="index.html">
+                Tech House
+            </a>
+
+            <!-- MOBILE MENU -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- MENU -->
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">Bosh sahifa</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="categories.html">Kategoriyalar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="products.html">Mahsulotlar</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="compare.html">Taqqoslash</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="cart.html">Savat</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="contact.html">Bog‘lanish</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+
+
+
+<!-- TITLE -->
+<div class="container mb-4">
+    <h2 class="fw-bold">Barcha mahsulotlar</h2>
+    <p class="text-muted">Oshxona jihozlari, tozalash texnikasi, isitish va sovutish qurilmalari, shaxsiy parvarish va aqlli uy mahsulotlari.</p>
+</div>
+
+
+<!-- CATEGORY FILTER -->
+<div class="container mb-4">
+    <div class="d-flex flex-wrap gap-2">
+        <button class="btn btn-outline-primary active">Hammasi</button>
+        <button class="btn btn-outline-primary">Oshxona</button>
+        <button class="btn btn-outline-primary">Tozalash</button>
+        <button class="btn btn-outline-primary">Isitish & Sovutish</button>
+        <button class="btn btn-outline-primary">Shaxsiy parvarish</button>
+        <button class="btn btn-outline-primary">Aqlli uy</button>
+    </div>
+</div>
+
+
+<!-- PRODUCTS GRID -->
+<div class="container pb-5">
+    <div class="row g-4">
+
+        <!-- 1-card -->
+        <div class="col-md-4">
+            <div class="card product-card shadow-sm">
+                <img src="./img/oshxona.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Mikser Bosch 500W</h5>
+                    <p class="card-text text-muted">Oshxona jihozi</p>
+                    <h4 class="text-primary">723 000 so'm</h4>
+                    <a href="product-details.html" class="btn btn-primary w-100 mt-2">Batafsil</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2-card -->
+        <div class="col-md-4">
+            <div class="card product-card shadow-sm">
+                <img src="./img/changyutgich.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Changyutgich Samsung</h5>
+                    <p class="card-text text-muted">Tozalash texnikasi</p>
+                    <h4 class="text-primary">6 950 000 so'm</h4>
+                    <a href="product-details.html" class="btn btn-primary w-100 mt-2">Batafsil</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3-card -->
+        <div class="col-md-4">
+            <div class="card product-card shadow-sm">
+                <img src="./img/pech.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Elektr pech LG</h5>
+                    <p class="card-text text-muted">Oshxona jihozi</p>
+                    <h4 class="text-primary">1 738 000 so'm</h4>
+                    <a href="product-details.html" class="btn btn-primary w-100 mt-2">Batafsil</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4-card -->
+        <div class="col-md-4">
+            <div class="card product-card shadow-sm">
+                <img src="./img/kandisaner.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Konditsioner Artel</h5>
+                    <p class="card-text text-muted">Sovutish</p>
+                    <h4 class="text-primary">4 349 900 so'm</h4>
+                    <a href="product-details.html" class="btn btn-primary w-100 mt-2">Batafsil</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5-card -->
+        <div class="col-md-4">
+            <div class="card product-card shadow-sm">
+                <img src="./img/fen.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Fen Philips Pro</h5>
+                    <p class="card-text text-muted">Shaxsiy parvarish</p>
+                    <h4 class="text-primary">169 000 so'm</h4>
+                    <a href="product-details.html" class="btn btn-primary w-100 mt-2">Batafsil</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6-card -->
+        <div class="col-md-4">
+            <div class="card product-card shadow-sm">
+                <img src="./img/lanpa.png" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Aqlli uy lampasi</h5>
+                    <p class="card-text text-muted">Aqlli uy</p>
+                    <h4 class="text-primary">349 000 so'm</h4>
+                    <a href="product-details.html" class="btn btn-primary w-100 mt-2">Batafsil</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<footer class="bg-dark text-white mt-5 py-5" style="padding-top: 70px; padding-bottom: 70px;">
+    <div class="container text-center">
+
+        <h5 class="fw-bold mb-3">Tech House</h5>
+
+        <p class="text-white-50 mb-3">
+            Maishiy texnika, aqlli uy jihozlari va elektronika do‘koni.
+        </p>
+
+        <div class="d-flex justify-content-center gap-4 mb-4 flex-wrap">
+
+            <a href="index.html" class="text-white-50 footer-link text-decoration-none">Bosh sahifa</a>
+            <a href="categories.html" class="text-white-50 footer-link text-decoration-none">Kategoriyalar</a>
+            <a href="products.html" class="text-white-50 footer-link text-decoration-none">Mahsulotlar</a>
+            <a href="compare.html" class="text-white-50 footer-link text-decoration-none">Taqqoslash</a>
+            <a href="cart.html" class="text-white-50 footer-link text-decoration-none">Savat</a>
+            <a href="contact.html" class="text-white-50 footer-link text-decoration-none">Bog‘lanish</a>
+
+        </div>
+
+        <hr class="border-secondary">
+
+        <p class="mb-0 small text-white-50">
+            © 2026 Tech House — Barcha huquqlar himoyalangan.
+        </p>
+
+    </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

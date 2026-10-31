@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategoriyalar - TechHouse</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* ==== CATEGORY CARD MODERN STYLE ==== */
+
+.category-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #e7e7e7;
+    cursor: pointer;
+
+    /* Soft shadow like Figma */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Image */
+.category-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Title */
+.category-card h5 {
+    font-weight: 600;
+    margin-top: 15px;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect */
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+    border-color: #ccc;
+}
+
+/* Image hover zoom */
+.category-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Title hover color */
+.category-card:hover h5 {
+    color: #1f1f1f;
+}
+
+/* Count text */
+.category-card p {
+    color: #888;
+    font-size: 14px;
+}
+
+</style>
+<body>
+ <header style="position: fixed; width: 100%;" class="bg-white border-bottom">
+        <div class="container-lg">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <div class="container-fluid px-0">
+                    <a class="navbar-brand fw-bold fs-3" href="index.html">TechHouse</a>
+                    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Bosh sahifa</a></li>
+                            <li class="nav-item"><a class="nav-link" href="categories.html">Kategoriyalar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="products.html">Mahsulotlar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="biz-haqimizda.html">Biz haqimizda</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="d-flex gap-2 ms-3">
+                        <a href="index.html" class="text-dark p-2 d-inline-flex align-items-center">
+                         <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3 13h1v7c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h1c.4 0 .77-.24.92-.62.15-.37.07-.8-.22-1.09l-8.99-9a.996.996 0 0 0-1.41 0l-9.01 9c-.29.29-.37.72-.22 1.09s.52.62.92.62Zm7 7v-5h4v5zm2-15.59 6 6V20h-2v-5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v5H6v-9.59z"></path>
+                         </svg>
+                        </a>
+
+                     <a href="#" class="text-dark p-2 d-inline-flex align-items-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M2.21 9.39c-.19.25-.25.57-.17.87l2.8 10.26c.24.87 1.03 1.47 1.93 1.47h10.47c.9 0 1.69-.61 1.93-1.47l2.8-10.26c.08-.3.02-.62-.17-.87a.99.99 0 0 0-.79-.39h-1.42l-3.71-6.5-1.74.99 3.15 5.5H6.72l3.15-5.5-1.74-.99L4.42 9H3a1 1 0 0 0-.79.39M17.24 20H6.76l-2.45-9h15.38z"></path>    <path d="M9 13h2v5H9zm4 0h2v5h-2z"></path>
+                          </svg>
+                    </a>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <section class="py-3 bg-light">
+        <div class="container-lg">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Bosh sahifa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Kategoriyalar</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- PAGE TITLE -->
+    <section class="py-5">
+        <div class="container-lg">
+            <h1 class="display-5 fw-bold mb-2">KATEGORIYALAR</h1>
+            <p class="text-muted">Bizning keng katalogdan siz kerakli texnikani topishingiz mumkin</p>
+        </div>
+    </section>
+
+  <!-- CATEGORIES GRID -->
+<section class="py-5 bg-light">
+    <div class="container-lg">
+        <div class="row g-4">
+
+            <!-- Oshxona texnikasi -->
+            <div class="col-md-6 col-lg-4">
+                <a href="products.html" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="img/oshxona_jihozlar.png" class="img-fluid rounded mb-3">
+                        <h5 class="text-center fw-medium">Oshxona texnikasi</h5>
+                        <p class="text-center text-muted small">8 ta mahsulot</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Mayishiy texnikasi -->
+            <div class="col-md-6 col-lg-4">
+                <a href="products.html" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="img/mashiyTexnika.png" class="img-fluid rounded mb-3">
+                        <h5 class="text-center fw-medium">Mayishiy texnikasi</h5>
+                        <p class="text-center text-muted small">12 ta mahsulot</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Issitish va sovutish texnikasi -->
+            <div class="col-md-6 col-lg-4">
+                <a href="products.html" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="img/issitish_sovitish.png" class="img-fluid rounded mb-3">
+                        <h5 class="text-center fw-medium">Issitish va sovutish texnikasi</h5>
+                        <p class="text-center text-muted small">15 ta mahsulot</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Kir yuvish mashinalari -->
+            <div class="col-md-6 col-lg-4">
+                <a href="products.html" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="img/kir_moshinalar.png" class="img-fluid rounded mb-3">
+                        <h5 class="text-center fw-medium">Kir yuvish mashinalari</h5>
+                        <p class="text-center text-muted small">10 ta mahsulot</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Muzlatgichlar -->
+            <div class="col-md-6 col-lg-4">
+                <a href="products.html" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="img/muzlatkichlar.png" class="img-fluid rounded mb-3">
+                        <h5 class="text-center fw-medium">Muzlatgichlar</h5>
+                        <p class="text-center text-muted small">7 ta mahsulot</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Blenderlar va miksеrlar -->
+            <div class="col-md-6 col-lg-4">
+                <a href="products.html" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="img/blenderlar.png" class="img-fluid rounded mb-3">
+                        <h5 class="text-center fw-medium">Blenderlar va mikserlar</h5>
+                        <p class="text-center text-muted small">11 ta mahsulot</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Aqilliy uy -->
+            <div class="col-md-6 col-lg-4">
+                <a href="products.html" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="img/aqilliy_uy.png" class="img-fluid rounded mb-3">
+                        <h5 class="text-center fw-medium">Aqilliy uy</h5>
+                        <p class="text-center text-muted small">13 ta mahsulot</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Isitish qurilmalari -->
+            <div class="col-md-6 col-lg-4">
+                <a href="products.html" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="img/issitish.png" class="img-fluid rounded mb-3">
+                        <h5 class="text-center fw-medium">Isitish qurilmalari</h5>
+                        <p class="text-center text-muted small">7 ta mahsulot</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Changitgichlar -->
+            <div class="col-md-6 col-lg-4">
+                <a href="products.html" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="img/Changitgichlar.png" class="img-fluid rounded mb-3">
+                        <h5 class="text-center fw-medium">Changitgichlar</h5>
+                        <p class="text-center text-muted small">10 ta mahsulot</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- CTA SECTION -->
+    <section class="py-5">
+        <div class="container-lg">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="h2 fw-bold mb-3">O'z kategoriyangizni topa olmadingizmi?</h2>
+                    <p class="text-muted mb-4">Biz bizning keng mahsulot katalogida siz har doim xohlagan texnikani topishingiz mumkin</p>
+                    <a href="products.html" class="btn btn-dark fw-bold px-4 py-2 text-decoration-none text-white">Barcha mahsulotlar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- FOOTER -->
+    <footer class="bg-light border-top py-5">
+        <div class="container-lg">
+            <div class="row mb-5">
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h6 class="fw-bold mb-3">Sozlamalar</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="products.html" class="text-decoration-none text-muted small">Mahsulotlar</a></li>
+                        <li><a href="categories.html" class="text-decoration-none text-muted small">Kategoriyalar</a></li>
+                        <li><a href="biz-haqimizda.html" class="text-decoration-none text-muted small">Biz haqimizda</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h6 class="fw-bold mb-3">Havolalar</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="blog.html" class="text-decoration-none text-muted small">Blog</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted small">Aloqa</a></li>
+                        <li><a href="blog.html" class="text-decoration-none text-muted small">Shartlar</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h6 class="fw-bold mb-3">Qo'llab-quvvatlash</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="faq.html" class="text-decoration-none text-muted small">FAQ</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted small">Aloqa markazi</a></li>
+                        <li><a href="#" class="text-decoration-none text-muted small">Qaytarish siyosati</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 text-md-end">
+                    <h1 class="display-5 fw-bold mb-0">TECH</h1>
+                    <h1 class="display-5 fw-bold">HOUSE</h1>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <p class="text-center text-muted small mt-4">© 2026 TechHouse. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+</body>
+</html>

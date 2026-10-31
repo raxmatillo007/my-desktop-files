@@ -1,0 +1,7 @@
+{
+    "prices": {
+        "weekly": 100,
+        "monthly": 500,
+        "yearly": 5000
+    }
+}

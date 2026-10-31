@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><title>Agent Hub</title>
+<style>
+body{margin:0;font:14px system-ui;background:#0b0e14;color:#dbe2f0;display:flex;height:100vh}
+#side{width:220px;padding:14px;border-right:1px solid #1e2533}
+#main{flex:1;display:flex;flex-direction:column}
+#log{flex:1;overflow:auto;padding:14px}
+.m{margin:6px 0}.m b{color:#7aa2ff}
+#bar{display:flex;gap:8px;padding:12px;border-top:1px solid #1e2533}
+input{flex:1;padding:10px;background:#141a26;border:1px solid #1e2533;color:inherit;border-radius:8px}
+button{padding:10px 16px;border:0;border-radius:8px;background:#3b6cf6;color:#fff;cursor:pointer}
+#perm{display:none;position:fixed;inset:0;background:#000a;align-items:center;justify-content:center}
+#box{background:#141a26;padding:24px;border-radius:12px;max-width:480px}
+</style>
+<div id="side"><h3>Agentlar</h3><div id="ag"></div></div>
+<div id="main"><div id="log"></div>
+<div id="bar"><input id="t" placeholder="Vazifa yozing..."><button onclick="send()">Yuborish</button><button style="background:#c93b3b" onclick="ws.send(JSON.stringify({type:'stop'}))">To'xtat</button></div></div>
+<div id="perm"><div id="box"><p id="pt"></p><button onclick="reply(true)">Ruxsat</button> <button style="background:#c93b3b" onclick="reply(false)">Rad etish</button></div></div>
+<script>
+const ws=new WebSocket('ws://127.0.0.1:8765/ws');let pid=null;
+ws.onmessage=e=>{const d=JSON.parse(e.data);
+ if(d.type=='message'){log.insertAdjacentHTML('beforeend',`<div class=m><b>${d.from} → ${d.to}:</b> ${esc(d.text)}</div>`);log.scrollTop=1e9}
+ if(d.type=='agents')ag.innerHTML=Object.entries(d.agents).map(([n,a])=>`<p><b>${n}</b><br><small>${esc(a.role)}</small></p>`).join('');
+ if(d.type=='permission'){pid=d.id;pt.textContent=`${d.agent}: ${d.action}`;perm.style.display='flex'}};
+function reply(a){ws.send(JSON.stringify({type:'permission_reply',id:pid,allow:a}));perm.style.display='none'}
+function send(){if(t.value){ws.send(JSON.stringify({type:'task',text:t.value}));t.value=''}}
+t.onkeydown=e=>e.key=='Enter'&&send();
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+</script>

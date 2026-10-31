@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kirish — CareTrack Clinic</title>
+  <link rel="stylesheet" href="/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body class="login-page">
+  <div class="login-wrap">
+    <div class="login-left">
+      <div class="login-brand">
+        <svg width="44" height="44" viewBox="0 0 40 40">
+          <rect width="40" height="40" rx="10" fill="rgba(255,255,255,0.2)"/>
+          <path d="M20 8v24M8 20h24" stroke="white" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <span>CareTrack</span>
+      </div>
+      <h2>Sog'liqni saqlash<br/>boshqaruvini<br/>osonlashtiring</h2>
+      <p>Shifokorlar, bemorlar va tashxislarni bir joyda boshqaring</p>
+    </div>
+    <div class="login-right">
+      <div class="login-card">
+        <h1>Tizimga kirish</h1>
+        <p class="login-sub">Hisob ma'lumotlaringizni kiriting</p>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="username">Foydalanuvchi nomi</label>
+            <input type="text" id="username" placeholder="username" autocomplete="username" required/>
+          </div>
+          <div class="form-group">
+            <label for="password">Parol</label>
+            <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" required/>
+          </div>
+          <div id="errorMsg" class="error-msg" style="display:none;margin-bottom:12px;"></div>
+          <button type="submit" class="btn btn-primary btn-full" style="margin-top:4px;">Kirish</button>
+        </form>
+        <div class="demo-accounts">
+          <p>Demo hisoblar:</p>
+          <div class="demo-btns">
+            <button class="demo-btn" onclick="fillDemo('admin','admin123')">Admin</button>
+            <button class="demo-btn" onclick="fillDemo('shifokor','shifokor123')">Clinician</button>
+            <button class="demo-btn" onclick="fillDemo('bemor1','bemor123')">Bemor</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function fillDemo(u, p) {
+      document.getElementById('username').value = u;
+      document.getElementById('password').value = p;
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const errEl = document.getElementById('errorMsg');
+      errEl.style.display = 'none';
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await axios.post('/api/auth/login', { username, password });
+        const data = res.data;
+        localStorage.setItem('token',      data.token);
+        localStorage.setItem('role',       data.role);
+        localStorage.setItem('username',   data.username);
+        localStorage.setItem('patient_id', data.patient_id ?? '');
+        if (data.role === 'patient') {
+          window.location.href = '/my-profile.html';
+        } else {
+          window.location.href = '/dashboard.html';
+        }
+      } catch (err) {
+        errEl.textContent = err.response?.data?.error || 'Server bilan ulanib bo\'lmadi';
+        errEl.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
